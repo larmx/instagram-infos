@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>A little stats on your Instagram account</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+  </head>
+  <body class="container">
+    <main>
+      <div class="jumbotron">
+        <h1 class="text-center">A little stats on your Instagram account</h1>
+        <% if (!isNaN(average) && average !== null) {%>
+          <h3 class="text-center">Average number of likes for the last <%= duration %> months</h3>
+          <h3 class="text-center"><%= average%></h3>
+        <%} if (isNaN(average) && average !== null) {%>
+          <h3 class="text-center">No post found !</h3>
+        <%} %>
+        <%if (error !== null) {%>
+          <h3 class="text-center"><%= error%></h3>
+        <%} %>
+        <form name="form1" method="POST" action="/">
+          <div class="form-group">
+            <label for="access_token">Access Token</label>
+            <input type="text" class="form-control" name="accessToken" id="accessToken" value=<%= accessToken || null %> >
+          </div>
+          <div class="form-group">
+            <label for="duration">Duration (in months)</label>
+            <input type="text" class="form-control" name="duration" id="duration" value=<%= duration || null %> >
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </main>
+  </body>
+</html>
